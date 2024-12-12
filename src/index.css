@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Plugin para manejar los espaciados de las tipografias */
+@plugin '@tailwindcss/typography';
+
+@layer base {
+  html {
+    @apply bg-red-500;
+  }
+}
