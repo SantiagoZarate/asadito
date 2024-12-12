@@ -11,4 +11,17 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      "/api/jumbo": {
+        target: "https://www.jumbo.com.ar",
+        changeOrigin: true,
+        rewrite: (path) =>
+          path.replace(
+            /^\/api\/jumbo/,
+            "/api/catalog_system/pub/products/search/"
+          ),
+      },
+    },
+  },
 });

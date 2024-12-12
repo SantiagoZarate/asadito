@@ -2,8 +2,7 @@ import { JumboResponse } from "@/interface/jumbo.interface";
 import { JumpoAPI } from ".";
 import { jumpoResponseMapper } from "./mapper";
 
-const URL =
-  "https://www.jumbo.com.ar/api/catalog_system/pub/products/search/?ft=";
+const URL = "/api/jumbo?ft=";
 
 const jumboAPI: JumpoAPI = {
   async get({ query }) {
