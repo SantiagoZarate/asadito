@@ -3,9 +3,9 @@
 // el precio varia segun la localidad.
 
 export const productIds = {
-  fernet: "318125",
-  cocaCola: "246613",
-  speed: "258978",
-  skyy: "35123",
-  chandon: "322216",
+  fernet: '318125',
+  cocaCola: '246613',
+  speed: '258978',
+  skyy: '35123',
+  chandon: '322216',
 };

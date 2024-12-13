@@ -21,13 +21,13 @@ export interface JumboResponse {
   ProductData: string[];
   SkuData: string[];
   Configuraciones: string[];
-  "Tipo de Producto": string[];
+  'Tipo de Producto': string[];
   Estado: string[];
   Origen: string[];
-  "Tipo de Animal": string[];
-  "Características Destacadas": string[];
-  "Uso Recomendado": string[];
-  "Observaciones y Recomendaciones": string[];
+  'Tipo de Animal': string[];
+  'Características Destacadas': string[];
+  'Uso Recomendado': string[];
+  'Observaciones y Recomendaciones': string[];
   allSpecifications: string[];
   allSpecificationsGroups: string[];
   description: string;
@@ -103,7 +103,7 @@ export interface DeliverySlaSample {
 }
 
 export interface DeliverySlaSamplesPerRegion {
-  "0": DeliverySlaSample;
+  '0': DeliverySlaSample;
 }
 
 export interface Installment {
@@ -146,7 +146,7 @@ export interface InstallmentElement {
 }
 
 export enum ID {
-  Jumboargentinaj5202Martinez = "JUMBOARGENTINAJ5202MARTINEZ",
+  Jumboargentinaj5202Martinez = 'JUMBOARGENTINAJ5202MARTINEZ',
 }
 
 export interface PaymentSystem {

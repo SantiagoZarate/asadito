@@ -1,24 +1,24 @@
-import { productIds } from "@/api/jumbo/product-id-mapper";
+import { productIds } from '@/api/jumbo/product-id-mapper';
 
 export const BEBIDAS_INIT = [
   {
-    name: "Fernet",
+    name: 'Fernet',
     id: productIds.fernet,
   },
   {
-    name: "Coca Cola 2.25lt",
+    name: 'Coca Cola 2.25lt',
     id: productIds.cocaCola,
   },
   {
-    name: "Chandon",
+    name: 'Chandon',
     id: productIds.chandon,
   },
   {
-    name: "Skyy",
+    name: 'Skyy',
     id: productIds.skyy,
   },
   {
-    name: "Speed",
+    name: 'Speed',
     id: productIds.speed,
   },
 ];

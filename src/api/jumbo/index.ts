@@ -1,4 +1,4 @@
-import { JumboItemDTO } from "@/shared/dto/jumbo-item.dto";
+import { JumboItemDTO } from '@/shared/dto/jumbo-item.dto';
 
 type GetOptions = {
   query?: string;

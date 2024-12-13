@@ -1,5 +1,5 @@
-import { JumboResponse } from "@/interface/jumbo.interface";
-import { JumboItemDTO } from "@/shared/dto/jumbo-item.dto";
+import { JumboResponse } from '@/interface/jumbo.interface';
+import { JumboItemDTO } from '@/shared/dto/jumbo-item.dto';
 
 export function jumpoResponseMapper(data: JumboResponse): JumboItemDTO {
   console.log({ data });

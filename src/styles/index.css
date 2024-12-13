@@ -1,6 +1,6 @@
-@import url("./fonts.css");
-@import url("./colors.css");
-@import "tailwindcss";
+@import url('./fonts.css');
+@import url('./colors.css');
+@import 'tailwindcss';
 
 /* Plugin para manejar los espaciados de las tipografias */
 @plugin "@tailwindcss/typography";
@@ -10,7 +10,7 @@
 
 @layer base {
   html {
-    @apply bg-background text-foreground scroll-smooth antialiased focus:scroll-auto;
+    @apply scroll-smooth bg-background text-foreground antialiased focus:scroll-auto;
   }
 }
 

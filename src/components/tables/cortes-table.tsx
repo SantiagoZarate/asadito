@@ -7,10 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { formatMoney } from "@/lib/formatMoney";
-import { Input } from "../ui/input";
-import { DrinkItem } from "./drinks-table";
+} from '@/components/ui/table';
+import { formatMoney } from '@/lib/formatMoney';
+import { Input } from '../ui/input';
+import { DrinkItem } from './drinks-table';
 
 interface Props {
   items: DrinkItem[];
@@ -20,7 +20,7 @@ interface Props {
 export function CortesTable({ items, onChangeItemUnit }: Props) {
   const totalPrice = items.reduce(
     (acc, curr) => acc + curr.units * curr.price,
-    0
+    0,
   );
   const showTotal = items.length > 0;
 
@@ -59,12 +59,12 @@ export function CortesTable({ items, onChangeItemUnit }: Props) {
       <TableFooter className="w-full p-0">
         <TableRow>
           <TableCell colSpan={4} className="p-0">
-            <footer data-enabled={showTotal} className="grid group *:p-2">
-              <div className="[grid-area:1/-1] bg-green-50 group-data-[enabled=true]:opacity-100 opacity-0 flex justify-between text-green-600 font-semibold">
+            <footer data-enabled={showTotal} className="group grid *:p-2">
+              <div className="flex justify-between bg-green-50 font-semibold text-green-600 opacity-0 [grid-area:1/-1] group-data-[enabled=true]:opacity-100">
                 <span>Total</span>
                 <span>{formatMoney(totalPrice)}</span>
               </div>
-              <div className="[grid-area:1/-1] group-data-[enabled=true]:opacity-0 flex justify-between">
+              <div className="flex justify-between [grid-area:1/-1] group-data-[enabled=true]:opacity-0">
                 <span>No hay produtos añadidos</span>
               </div>
             </footer>

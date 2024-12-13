@@ -1,15 +1,15 @@
-import { jumboAPI } from "@/api/jumbo/jumpo.api";
+import { jumboAPI } from '@/api/jumbo/jumpo.api';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { BEBIDAS_INIT, InitItem } from "@/data/constants";
-import { useState } from "react";
-import { Container } from "../ui/craft";
-import { CortesTable } from "./cortes-table";
+} from '@/components/ui/select';
+import { BEBIDAS_INIT, InitItem } from '@/data/constants';
+import { useState } from 'react';
+import { Container } from '../ui/craft';
+import { CortesTable } from './cortes-table';
 
 export interface DrinkItem {
   name: string;
@@ -59,7 +59,7 @@ export function DrinksTable() {
 
   return (
     <Container>
-      <header className="flex justify-between items-baseline">
+      <header className="flex items-baseline justify-between bg-red-300">
         <h2>Bebidas</h2>
         <Select onValueChange={onSelectItem}>
           <SelectTrigger className="w-[180px]">
