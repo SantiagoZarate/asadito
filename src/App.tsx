@@ -1,15 +1,41 @@
-import { useEffect, useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
 import { jumboAPI } from "./api/jumbo/jumpo.api";
+import { CortesTable } from "./components/tables/cortes-table";
 import { Container, Main, Section } from "./components/ui/craft";
-import { formatMoney } from "./lib/formatMoney";
-import { JumboItemDTO } from "./shared/dto/jumbo-item.dto";
+import { BEBIDAS_INIT, InitItem } from "./data/constants";
+
+export interface Item {
+  name: string;
+  price: number;
+  grams: number;
+}
 
 export default function App() {
-  const [items, setItems] = useState<JumboItemDTO[]>([]);
+  const [bebidas, setBebidas] = useState<InitItem[]>(BEBIDAS_INIT);
+  const [items, setItems] = useState<Item[]>([]);
 
-  useEffect(() => {
-    jumboAPI.get({ query: "vacio" }).then(setItems);
-  }, []);
+  const onSelectItem = async (id: string) => {
+    const item = await jumboAPI.getById({ id: id });
+    setItems((prevState) => {
+      const chosenItem = bebidas.find((bebida) => bebida.id === id)!;
+      setBebidas((state) => state.filter((b) => b.id !== id));
+      return [
+        ...prevState,
+        {
+          grams: 100,
+          name: chosenItem?.name,
+          price: item.price,
+        },
+      ];
+    });
+  };
 
   return (
     <Main>
@@ -28,15 +54,20 @@ export default function App() {
       </Section>
       <Section>
         <Container>
-          <h2>Cortes de carne</h2>
-          <ul className="flex flex-col *:p-2 *:flex *:justify-between *:items-center divide-y">
-            {items.map((item, index) => (
-              <li key={index}>
-                <p className="lowercase first-letter:capitalize">{item.name}</p>
-                <p>{formatMoney(item.price)}</p>
-              </li>
-            ))}
-          </ul>
+          <header className="flex justify-between items-baseline">
+            <h2>Bebidas</h2>
+            <Select onValueChange={onSelectItem}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Agregar bebida" />
+              </SelectTrigger>
+              <SelectContent>
+                {bebidas.map((bebida) => (
+                  <SelectItem value={bebida.id}>{bebida.name}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </header>
+          <CortesTable items={items} />
         </Container>
       </Section>
     </Main>
