@@ -59,7 +59,7 @@ export function DrinksTable() {
 
   return (
     <Container>
-      <header className="flex items-baseline justify-between bg-red-300">
+      <header className="flex items-baseline justify-between">
         <h2>Bebidas</h2>
         <Select onValueChange={onSelectItem}>
           <SelectTrigger className="w-[180px]">
