@@ -9,15 +9,23 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { formatMoney } from '@/lib/formatMoney';
+import { MarkMicroIcon } from '../icons/mark-micro-icon';
 import { Input } from '../ui/input';
 import { DrinkItem } from './drinks-table';
 
 interface Props {
   items: DrinkItem[];
   onChangeItemUnit: (id: string, value: number) => void;
+  onChangeItemPrice: (id: string, value: number) => void;
+  onDeleteItem: (id: string) => void;
 }
 
-export function CortesTable({ items, onChangeItemUnit }: Props) {
+export function CortesTable({
+  items,
+  onChangeItemUnit,
+  onDeleteItem,
+  onChangeItemPrice,
+}: Props) {
   const totalPrice = items.reduce(
     (acc, curr) => acc + curr.units * curr.price,
     0,
@@ -31,23 +39,38 @@ export function CortesTable({ items, onChangeItemUnit }: Props) {
         <TableRow>
           <TableHead>Corte</TableHead>
           <TableHead>Unidades</TableHead>
+          <TableHead>Precio por unidad</TableHead>
           <TableHead className="text-right">Precio</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {items.map((item) => (
-          <TableRow key={item.name}>
-            <TableCell className="font-medium">{item.name}</TableCell>
+          <TableRow key={item.name} className="group">
+            <TableCell className="font-medium">
+              <button
+                className="mr-2 cursor-pointer rounded-md border bg-secondary p-1 transition"
+                onClick={() => onDeleteItem(item.id)}
+              >
+                <MarkMicroIcon />
+              </button>
+              {item.name}
+            </TableCell>
             <TableCell>
               <Input
                 onChange={(e) =>
                   onChangeItemUnit(item.id, Number(e.currentTarget.value))
                 }
                 value={item.units}
-                className="max-w-20"
-                defaultValue={1}
                 type="number"
-                max={999}
+              />
+            </TableCell>
+            <TableCell>
+              <Input
+                onChange={(e) =>
+                  onChangeItemPrice(item.id, Number(e.currentTarget.value))
+                }
+                value={item.price}
+                type="number"
               />
             </TableCell>
             <TableCell className="text-right">
