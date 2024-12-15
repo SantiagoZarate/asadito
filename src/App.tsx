@@ -1,12 +1,6 @@
 import { DrinksTable } from './components/tables/drinks-table';
 import { Container, Main, Section } from './components/ui/craft';
 
-export interface Item {
-  name: string;
-  price: number;
-  grams: number;
-}
-
 export default function App() {
   return (
     <Main>

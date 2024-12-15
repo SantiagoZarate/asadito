@@ -8,29 +8,42 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  useProductDispatch,
+  useProductSelector,
+} from '@/context/product/hooks';
+import {
+  deleteItem,
+  updateItemPrice,
+  updateItemUnits,
+} from '@/context/product/product-slice';
 import { formatMoney } from '@/lib/formatMoney';
+import { toast } from 'sonner';
 import { MarkMicroIcon } from '../icons/mark-micro-icon';
 import { Input } from '../ui/input';
-import { DrinkItem } from './drinks-table';
 
-interface Props {
-  items: DrinkItem[];
-  onChangeItemUnit: (id: string, value: number) => void;
-  onChangeItemPrice: (id: string, value: number) => void;
-  onDeleteItem: (id: string) => void;
-}
-
-export function CortesTable({
-  items,
-  onChangeItemUnit,
-  onDeleteItem,
-  onChangeItemPrice,
-}: Props) {
+export function CortesTable() {
+  const items = useProductSelector((state) => state.items);
+  const dispatch = useProductDispatch();
   const totalPrice = items.reduce(
     (acc, curr) => acc + curr.units * curr.price,
     0,
   );
   const showTotal = items.length > 0;
+
+  const onDeleteItem = (id: string) => {
+    dispatch(deleteItem(id));
+    toast('Item eliminado');
+  };
+
+  const onChangeItemUnits = (id: string, value: number) => {
+    // Si la cantidad es cero se elimina el producto de la lista
+    if (value <= 0) {
+      toast('Item eliminado');
+      dispatch(deleteItem(id));
+    }
+    dispatch(updateItemUnits({ id, newUnits: value }));
+  };
 
   return (
     <Table>
@@ -58,7 +71,7 @@ export function CortesTable({
             <TableCell>
               <Input
                 onChange={(e) =>
-                  onChangeItemUnit(item.id, Number(e.currentTarget.value))
+                  onChangeItemUnits(item.id, Number(e.currentTarget.value))
                 }
                 value={item.units}
                 type="number"
@@ -67,7 +80,12 @@ export function CortesTable({
             <TableCell>
               <Input
                 onChange={(e) =>
-                  onChangeItemPrice(item.id, Number(e.currentTarget.value))
+                  dispatch(
+                    updateItemPrice({
+                      newPrice: Number(e.currentTarget.value),
+                      id: item.id,
+                    }),
+                  )
                 }
                 value={item.price}
                 type="number"
