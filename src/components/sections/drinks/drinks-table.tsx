@@ -19,10 +19,10 @@ import {
 } from '@/context/product/product-slice';
 import { formatMoney } from '@/lib/formatMoney';
 import { toast } from 'sonner';
-import { MarkMicroIcon } from '../icons/mark-micro-icon';
-import { Input } from '../ui/input';
+import { MarkMicroIcon } from '../../icons/mark-micro-icon';
+import { Input } from '../../ui/input';
 
-export function CortesTable() {
+export function DrinksTable() {
   const items = useProductSelector((state) => state.items);
   const dispatch = useProductDispatch();
   const totalPrice = items.reduce(
@@ -102,7 +102,7 @@ export function CortesTable() {
           <TableCell colSpan={4} className="p-0">
             <footer data-enabled={showTotal} className="group grid *:p-2">
               <div className="flex justify-between bg-green-50 font-semibold text-green-600 opacity-0 [grid-area:1/-1] group-data-[enabled=true]:opacity-100">
-                <span>Total</span>
+                <span>Total Bebidas</span>
                 <span>{formatMoney(totalPrice)}</span>
               </div>
               <div className="flex justify-between [grid-area:1/-1] group-data-[enabled=true]:opacity-0">

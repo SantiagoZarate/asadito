@@ -13,10 +13,10 @@ import {
 import { addItem } from '@/context/product/product-slice';
 import { BEBIDAS_INIT } from '@/data/constants';
 import { toast } from 'sonner';
-import { Container } from '../ui/craft';
-import { CortesTable } from './cortes-table';
+import { DrinksPlaceholder } from './drinks-placeholder';
+import { DrinksTable } from './drinks-table';
 
-export function DrinksTable() {
+export function DrinksSection() {
   const items = useProductSelector((state) => state.items);
   const dispatch = useProductDispatch();
 
@@ -37,7 +37,7 @@ export function DrinksTable() {
   };
 
   return (
-    <Container>
+    <section>
       <header className="flex items-baseline justify-between">
         <h2>Bebidas</h2>
         <Select onValueChange={onSelectItem}>
@@ -56,7 +56,7 @@ export function DrinksTable() {
           </SelectContent>
         </Select>
       </header>
-      <CortesTable />
-    </Container>
+      {items.length ? <DrinksTable /> : <DrinksPlaceholder />}
+    </section>
   );
 }
