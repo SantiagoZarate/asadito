@@ -1,18 +1,38 @@
-import { useProductSelector } from '@/context/product/hooks';
-import { CORTES_INIT } from '@/data/constants';
+import { jumboAPI } from '@/api/jumbo/jumpo.api';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@radix-ui/react-select';
+} from '@/components/ui/select';
+import {
+  useProductDispatch,
+  useProductSelector,
+} from '@/context/product/hooks';
+import { addItem } from '@/context/product/meat/meat-slice';
+import { CORTES_INIT } from '@/data/constants';
+import { toast } from 'sonner';
+import { MeatTable } from './meat-table';
 
 export function MeatSection() {
   const items = useProductSelector((state) => state.meat.items);
+  const dispatch = useProductDispatch();
 
-  const onSelectItem = (value: string) => {
-    console.log({ value });
+  const onSelectItem = (id: string) => {
+    const chosenItem = CORTES_INIT.find((bebida) => bebida.id === id)!;
+
+    jumboAPI.getById({ id: id }).then((response) => {
+      dispatch(
+        addItem({
+          name: chosenItem?.name,
+          price: response.price,
+          id: chosenItem.id,
+          grams: 1000,
+        }),
+      );
+      toast('Item añadido');
+    });
   };
 
   return (
@@ -21,7 +41,7 @@ export function MeatSection() {
         <h2>Cortes de carne</h2>
         <Select onValueChange={onSelectItem}>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Agregar bebida" />
+            <SelectValue placeholder="Agregar Corte" />
           </SelectTrigger>
           <SelectContent>
             {CORTES_INIT.map((bebida) => (
@@ -35,6 +55,7 @@ export function MeatSection() {
           </SelectContent>
         </Select>
       </header>
+      <MeatTable />
     </section>
   );
 }

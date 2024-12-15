@@ -14,6 +14,8 @@ export const meatSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action: PayloadAction<MeatItem>) {
+      console.log({ payload: action.payload });
+
       state.items.push(action.payload);
     },
     deleteItem(state, action: PayloadAction<string>) {
