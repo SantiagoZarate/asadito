@@ -6,18 +6,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+
+import { addItem } from '@/context/product/drinks/drinks-slice';
 import {
   useProductDispatch,
   useProductSelector,
 } from '@/context/product/hooks';
-import { addItem } from '@/context/product/product-slice';
 import { BEBIDAS_INIT } from '@/data/constants';
 import { toast } from 'sonner';
 import { DrinksPlaceholder } from './drinks-placeholder';
 import { DrinksTable } from './drinks-table';
 
 export function DrinksSection() {
-  const items = useProductSelector((state) => state.items);
+  const items = useProductSelector((state) => state.drinks.items);
   const dispatch = useProductDispatch();
 
   const onSelectItem = (id: string) => {

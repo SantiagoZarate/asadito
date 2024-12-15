@@ -8,22 +8,23 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  useProductDispatch,
-  useProductSelector,
-} from '@/context/product/hooks';
+
 import {
   deleteItem,
   updateItemPrice,
   updateItemUnits,
-} from '@/context/product/product-slice';
+} from '@/context/product/drinks/drinks-slice';
+import {
+  useProductDispatch,
+  useProductSelector,
+} from '@/context/product/hooks';
 import { formatMoney } from '@/lib/formatMoney';
 import { toast } from 'sonner';
 import { MarkMicroIcon } from '../../icons/mark-micro-icon';
 import { Input } from '../../ui/input';
 
 export function DrinksTable() {
-  const items = useProductSelector((state) => state.items);
+  const items = useProductSelector((state) => state.drinks.items);
   const dispatch = useProductDispatch();
   const totalPrice = items.reduce(
     (acc, curr) => acc + curr.units * curr.price,

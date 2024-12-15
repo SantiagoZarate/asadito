@@ -1,32 +1,30 @@
-import { DrinkItem } from '@/interface/product.interface';
+import { MeatItem } from '@/interface/meat.interface';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ProductState {
-  items: DrinkItem[];
-  people: number;
+  items: MeatItem[];
 }
 
 const initialState: ProductState = {
   items: [],
-  people: 1,
 };
 
-export const productSlice = createSlice({
-  name: 'product',
+export const meatSlice = createSlice({
+  name: 'meat',
   initialState,
   reducers: {
-    addItem(state, action: PayloadAction<DrinkItem>) {
+    addItem(state, action: PayloadAction<MeatItem>) {
       state.items.push(action.payload);
     },
     deleteItem(state, action: PayloadAction<string>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
-    updateItemUnits(
+    updateItemGrams(
       state,
       { payload }: PayloadAction<{ id: string; newUnits: number }>,
     ) {
       const item = state.items.find((item) => item.id === payload.id)!;
-      item.units = payload.newUnits;
+      item.grams = payload.newUnits;
     },
     updateItemPrice(
       state,
@@ -35,9 +33,6 @@ export const productSlice = createSlice({
       const item = state.items.find((item) => item.id === payload.id)!;
       item.price = payload.newPrice;
     },
-    updatePeopleCount(state, { payload }: PayloadAction<number>) {
-      state.people = payload;
-    },
   },
 });
 
@@ -45,9 +40,8 @@ export const productSlice = createSlice({
 export const {
   addItem,
   deleteItem,
-  updateItemUnits,
+  updateItemGrams: updateItemUnits,
   updateItemPrice,
-  updatePeopleCount,
-} = productSlice.actions;
+} = meatSlice.actions;
 
-export default productSlice.reducer;
+export default meatSlice.reducer;

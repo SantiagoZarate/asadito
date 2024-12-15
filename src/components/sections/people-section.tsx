@@ -2,14 +2,14 @@ import {
   useProductDispatch,
   useProductSelector,
 } from '@/context/product/hooks';
-import { updatePeopleCount } from '@/context/product/product-slice';
+import { updatePeopleCount } from '@/context/product/people/people-slice';
 import { Container } from '../ui/craft';
 import { Input } from '../ui/input';
 import { SectionHeader } from '../ui/section-header';
 
 export function PeopleSection() {
   const dispatch = useProductDispatch();
-  const people = useProductSelector((state) => state.people);
+  const people = useProductSelector((state) => state.people.people);
 
   return (
     <Container className="flex flex-col gap-6">

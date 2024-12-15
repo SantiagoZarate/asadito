@@ -3,8 +3,8 @@ import { useProductSelector } from '@/context/product/hooks';
 import { formatMoney } from '@/lib/formatMoney';
 
 export function Footer() {
-  const items = useProductSelector((state) => state.items);
-  const people = useProductSelector((state) => state.people);
+  const items = useProductSelector((state) => state.drinks.items);
+  const people = useProductSelector((state) => state.people.people);
 
   const totalPrice = items.reduce(
     (acc, curr) => acc + curr.units * curr.price,
