@@ -3,10 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ProductState {
   items: DrinkItem[];
+  people: number;
 }
 
 const initialState: ProductState = {
   items: [],
+  people: 1,
 };
 
 export const productSlice = createSlice({
@@ -33,11 +35,19 @@ export const productSlice = createSlice({
       const item = state.items.find((item) => item.id === payload.id)!;
       item.price = payload.newPrice;
     },
+    updatePeopleCount(state, { payload }: PayloadAction<number>) {
+      state.people = payload;
+    },
   },
 });
 
 // Export the generated action creators for use in components
-export const { addItem, deleteItem, updateItemUnits, updateItemPrice } =
-  productSlice.actions;
+export const {
+  addItem,
+  deleteItem,
+  updateItemUnits,
+  updateItemPrice,
+  updatePeopleCount,
+} = productSlice.actions;
 
 export default productSlice.reducer;
