@@ -1,22 +1,22 @@
 import { jumboAPI } from '@/api/jumbo/jumpo.api';
-import { GrillIcon } from '@/components/icons/grill-icon';
+import { SausageIcon } from '@/components/icons/sausage-icon';
 import { SectionHeader } from '@/components/ui/section/section-header';
 import { SectionPlaceholder } from '@/components/ui/section/section-placeholder';
 import {
   useProductDispatch,
   useProductSelector,
 } from '@/context/product/hooks';
-import { addItem } from '@/context/product/meat/meat-slice';
-import { CORTES_INIT } from '@/data/constants';
+import { addItem } from '@/context/product/offel/offer-slice';
+import { OFFAL_INIT } from '@/data/constants';
 import { toast } from 'sonner';
-import { MeatTable } from './meat-table';
+import { OffalTable } from './offal-table';
 
-export function MeatSection() {
-  const items = useProductSelector((state) => state.meat.items);
+export function OffelSection() {
+  const items = useProductSelector((state) => state.offel.items);
   const dispatch = useProductDispatch();
 
   const onSelectItem = (id: string) => {
-    const chosenItem = CORTES_INIT.find((bebida) => bebida.id === id)!;
+    const chosenItem = OFFAL_INIT.find((bebida) => bebida.id === id)!;
 
     jumboAPI.getById({ id: id }).then((response) => {
       dispatch(
@@ -24,7 +24,7 @@ export function MeatSection() {
           name: chosenItem?.name,
           price: response.price,
           id: chosenItem.id,
-          grams: 1000,
+          grams: 400,
         }),
       );
       toast('Item añadido');
@@ -35,17 +35,17 @@ export function MeatSection() {
     <section>
       <SectionHeader
         onValueChange={onSelectItem}
-        placeholder="Agregar corte"
-        defaultItems={CORTES_INIT}
-        title="Cortes de carne"
+        placeholder="Agregar achura"
+        defaultItems={OFFAL_INIT}
+        title="Achuras"
         items={items}
       />
       {items.length ? (
-        <MeatTable />
+        <OffalTable />
       ) : (
         <SectionPlaceholder
-          icon={<GrillIcon />}
-          text="Agrega cortes de carne para el asado"
+          text="Agrega achuras para ir picando"
+          icon={<SausageIcon />}
         />
       )}
     </section>

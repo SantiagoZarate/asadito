@@ -1,4 +1,4 @@
-import { drinksIds, meatIds } from '@/api/jumbo/product-id-mapper';
+import { drinksIds, meatIds, offalIds } from '@/api/jumbo/product-id-mapper';
 
 export const CORTES_INIT = [
   {
@@ -12,6 +12,25 @@ export const CORTES_INIT = [
   {
     name: 'Colita de Cuadril',
     id: meatIds.colitaDeCuadril,
+  },
+];
+
+export const OFFAL_INIT = [
+  {
+    name: 'Morcilla',
+    id: offalIds.morcilla,
+  },
+  {
+    name: 'Chinchulin',
+    id: offalIds.chinchulin,
+  },
+  {
+    name: 'Molleja',
+    id: offalIds.molleja,
+  },
+  {
+    name: 'Chorizo',
+    id: offalIds.chorizo,
   },
 ];
 

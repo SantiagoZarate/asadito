@@ -4,7 +4,7 @@ import {
 } from '@/context/product/hooks';
 import { updatePeopleCount } from '@/context/product/people/people-slice';
 import { Input } from '../ui/input';
-import { SectionHeader } from '../ui/section-header';
+import { SectionDescription } from '../ui/section/section-description';
 
 export function PeopleSection() {
   const dispatch = useProductDispatch();
@@ -12,7 +12,7 @@ export function PeopleSection() {
 
   return (
     <section className="flex flex-col gap-6">
-      <SectionHeader
+      <SectionDescription
         description="Para calcular cuanto hay que poner por cabeza"
         title="Cuantos comensales vas a tener?"
         step={1}

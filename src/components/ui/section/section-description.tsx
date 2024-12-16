@@ -4,7 +4,7 @@ interface Props {
   step?: number;
 }
 
-export function SectionHeader({ description, title, step = 1 }: Props) {
+export function SectionDescription({ description, title, step = 1 }: Props) {
   return (
     <header
       data-content={step}

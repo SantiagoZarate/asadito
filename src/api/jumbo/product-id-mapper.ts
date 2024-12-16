@@ -14,3 +14,10 @@ export const drinksIds = {
   skyy: '35123',
   chandon: '322216',
 };
+
+export const offalIds = {
+  morcilla: '263150',
+  chorizo: '263146',
+  chinchulin: '331766',
+  molleja: '337111',
+};
