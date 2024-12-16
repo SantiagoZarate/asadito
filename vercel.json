@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/jumbo/:path*",
+      "destination": "https://www.jumbo.com.ar/api/catalog_system/pub/products/search/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
