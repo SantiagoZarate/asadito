@@ -16,6 +16,7 @@ export default defineConfig({
       '/api/jumbo': {
         target: 'https://www.jumbo.com.ar',
         changeOrigin: true,
+        secure: process.env.NODE_ENV === 'production',
         rewrite: (path) =>
           path.replace(
             /^\/api\/jumbo/,
