@@ -1,6 +1,6 @@
 import { Footer } from '@/components/common/footer/footer';
 import { Receipt } from '@/components/receipt/receipt';
-import { HeroSection } from '@/components/sections/hero-section';
+import { HeroSection } from '@/components/sections/hero/hero-section';
 import { LastStepSection } from '@/components/sections/last-step/last-step-section';
 import { PeopleSection } from '@/components/sections/people-section';
 import { ProductsSection } from '@/components/sections/products/products-section';

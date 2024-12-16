@@ -1,0 +1,44 @@
+:root {
+  --hero-emoji-animation-duration: 2s;
+}
+
+.hero span {
+  position: absolute;
+  opacity: 0;
+  filter: blur(10px);
+}
+.steak {
+  animation: steakInit var(--hero-emoji-animation-duration) ease-in-out forwards;
+}
+
+@keyframes steakInit {
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(300%) translateY(-200%) rotate(30deg);
+  }
+}
+
+.money {
+  animation: moneyInit var(--hero-emoji-animation-duration) ease-in-out forwards;
+}
+
+@keyframes moneyInit {
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(-350%) translateY(100%) rotate(-30deg);
+  }
+}
+
+.fire {
+  animation: fireInit var(--hero-emoji-animation-duration) ease-in-out forwards;
+}
+
+@keyframes fireInit {
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(250%) translateY(200%) rotate(-30deg);
+  }
+}
