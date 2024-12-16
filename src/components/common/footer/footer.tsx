@@ -5,6 +5,7 @@ import { formatMoney } from '@/lib/formatMoney';
 export function Footer() {
   const drinkItems = useProductSelector((state) => state.drinks.items);
   const meatItems = useProductSelector((state) => state.meat.items);
+  const offalItems = useProductSelector((state) => state.offel.items);
   const people = useProductSelector((state) => state.people.people);
 
   const totalDrinkPrice = drinkItems.reduce(
@@ -17,7 +18,12 @@ export function Footer() {
     0,
   );
 
-  const totalPrice = totalDrinkPrice + totalMeatPrice;
+  const totalOffalPrice = offalItems.reduce(
+    (acc, curr) => acc + (curr.grams / 1000) * curr.price,
+    0,
+  );
+
+  const totalPrice = totalDrinkPrice + totalMeatPrice + totalOffalPrice;
 
   const totalMeatKilograms = meatItems.reduce(
     (acc, curr) => acc + curr.grams / 1000,
@@ -45,7 +51,7 @@ export function Footer() {
             className="group flex flex-col data-[low-grams=true]:text-yellow-500"
           >
             <div className="flex justify-between gap-4">
-              <p>Kg de carne por cabeza</p>
+              <p>Kg de carne por cabeza (Sin contar achuras)</p>
               <p>{totalMeatKilograms / people}kg</p>
             </div>
             <footer className="opacity-0 group-data-[low-grams=true]:opacity-100">
