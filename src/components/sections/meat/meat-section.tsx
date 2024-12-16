@@ -1,4 +1,6 @@
 import { jumboAPI } from '@/api/jumbo/jumpo.api';
+import { GrillIcon } from '@/components/icons/grill-icon';
+import { SectionPlaceholder } from '@/components/ui/section/section-placeholder';
 import {
   Select,
   SelectContent,
@@ -55,7 +57,14 @@ export function MeatSection() {
           </SelectContent>
         </Select>
       </header>
-      <MeatTable />
+      {items.length ? (
+        <MeatTable />
+      ) : (
+        <SectionPlaceholder
+          icon={<GrillIcon />}
+          text="Agrega cortes de carne para el asado"
+        />
+      )}
     </section>
   );
 }

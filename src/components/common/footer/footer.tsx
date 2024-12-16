@@ -3,15 +3,23 @@ import { useProductSelector } from '@/context/product/hooks';
 import { formatMoney } from '@/lib/formatMoney';
 
 export function Footer() {
-  const items = useProductSelector((state) => state.drinks.items);
+  const drinkItems = useProductSelector((state) => state.drinks.items);
+  const meatItems = useProductSelector((state) => state.meat.items);
   const people = useProductSelector((state) => state.people.people);
 
-  const totalPrice = items.reduce(
+  const totalDrinkPrice = drinkItems.reduce(
     (acc, curr) => acc + curr.units * curr.price,
     0,
   );
 
-  if (!items.length) {
+  const totalMeatPrice = meatItems.reduce(
+    (acc, curr) => acc + (curr.grams / 1000) * curr.price,
+    0,
+  );
+
+  const totalPrice = totalDrinkPrice + totalMeatPrice;
+
+  if (!totalPrice) {
     return null;
   }
 

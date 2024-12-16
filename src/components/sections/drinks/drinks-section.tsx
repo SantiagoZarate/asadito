@@ -7,6 +7,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
+import { BeerIcon } from '@/components/icons/beer-icon';
+import { SectionPlaceholder } from '@/components/ui/section/section-placeholder';
 import { addItem } from '@/context/product/drinks/drinks-slice';
 import {
   useProductDispatch,
@@ -14,7 +16,6 @@ import {
 } from '@/context/product/hooks';
 import { BEBIDAS_INIT } from '@/data/constants';
 import { toast } from 'sonner';
-import { DrinksPlaceholder } from './drinks-placeholder';
 import { DrinksTable } from './drinks-table';
 
 export function DrinksSection() {
@@ -57,7 +58,14 @@ export function DrinksSection() {
           </SelectContent>
         </Select>
       </header>
-      {items.length ? <DrinksTable /> : <DrinksPlaceholder />}
+      {items.length ? (
+        <DrinksTable />
+      ) : (
+        <SectionPlaceholder
+          icon={<BeerIcon />}
+          text="Añade bebidas para acompañar el asado"
+        />
+      )}
     </section>
   );
 }
