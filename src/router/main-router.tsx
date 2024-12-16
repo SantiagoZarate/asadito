@@ -1,4 +1,5 @@
 import { HomePage } from '@/pages/home/home-page';
+import { SharePage } from '@/pages/share/share-page';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
 const mainRouter: RouteObject[] = [
@@ -8,7 +9,7 @@ const mainRouter: RouteObject[] = [
   },
   {
     path: '/share',
-    element: <HomePage />,
+    element: <SharePage />,
   },
 ];
 export default createBrowserRouter(mainRouter);

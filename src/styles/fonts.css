@@ -1,23 +1,23 @@
 @font-face {
   font-family: 'San Francisco';
-  src: url('./fonts/SF-Pro-Text-Regular.otf');
+  src: url('/fonts/SF-Pro-Text-Regular.otf');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'San Francisco';
-  src: url('./fonts/SF-Pro-Text-Semibold.otf');
+  src: url('/fonts/SF-Pro-Text-Semibold.otf');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'San Francisco';
-  src: url('./fonts/SF-Pro-Text-Bold.otf');
+  src: url('/fonts/SF-Pro-Text-Bold.otf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'San Francisco';
-  src: url('./fonts/SF-Pro-Text-Black.otf');
+  src: url('/fonts/SF-Pro-Text-Black.otf');
   font-weight: 900;
 }
