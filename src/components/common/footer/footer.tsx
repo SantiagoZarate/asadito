@@ -19,6 +19,11 @@ export function Footer() {
 
   const totalPrice = totalDrinkPrice + totalMeatPrice;
 
+  const totalMeatKilograms = meatItems.reduce(
+    (acc, curr) => acc + curr.grams / 1000,
+    0,
+  );
+
   if (!totalPrice) {
     return null;
   }
@@ -34,6 +39,23 @@ export function Footer() {
           <p>Por cabeza</p>
           <p>{formatMoney(totalPrice / people)}</p>
         </div>
+        {meatItems.length ? (
+          <div
+            data-low-grams={totalMeatKilograms / people < 0.4}
+            className="group flex flex-col data-[low-grams=true]:text-yellow-500"
+          >
+            <div className="flex justify-between gap-4">
+              <p>Kg de carne por cabeza</p>
+              <p>{totalMeatKilograms / people}kg</p>
+            </div>
+            <footer className="opacity-0 group-data-[low-grams=true]:opacity-100">
+              <p className="text-xs text-yellow-800">
+                Parece que a tu asado le falta un poco de carne (0.4 - 0.7kg en
+                promedio por persona)
+              </p>
+            </footer>
+          </div>
+        ) : null}
       </Container>
     </Section>
   );
