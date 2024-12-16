@@ -1,3 +1,4 @@
+import { Receipt } from './components/receipt/receipt';
 import { HeroSection } from './components/sections/hero-section';
 import { LastStepSection } from './components/sections/last-step/last-step-section';
 import { PeopleSection } from './components/sections/people-section';
@@ -15,6 +16,7 @@ export default function App() {
           <LastStepSection />
         </Container>
       </Section>
+      <Receipt />
     </Main>
   );
 }
