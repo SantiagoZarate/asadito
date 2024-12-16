@@ -6,5 +6,9 @@ const mainRouter: RouteObject[] = [
     path: '/',
     element: <HomePage />,
   },
+  {
+    path: '/share',
+    element: <HomePage />,
+  },
 ];
 export default createBrowserRouter(mainRouter);

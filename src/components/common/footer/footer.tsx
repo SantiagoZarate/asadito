@@ -52,7 +52,7 @@ export function Footer() {
           >
             <div className="flex justify-between gap-4">
               <p>Kg de carne por cabeza (Sin contar achuras)</p>
-              <p>{totalMeatKilograms / people}kg</p>
+              <p>{(totalMeatKilograms / people).toFixed(3)}kg</p>
             </div>
             <footer className="opacity-0 group-data-[low-grams=true]:opacity-100">
               <p className="text-xs text-yellow-800">
