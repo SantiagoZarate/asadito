@@ -53,11 +53,9 @@ export const ReceiptSection = forwardRef<HTMLElement, {}>((_, ref) => {
             toast('Link copiado al portapapeles! compartilo con tus amigos');
           }}
           disabled={
-            meatItems.length === 0 &&
-            drinkItems.length === 0 &&
-            offalItems.length === 0
+            meatItems.length + drinkItems.length + offalItems.length === 0
           }
-          className="cursor-pointer rounded-xs bg-green-300 px-4 py-2 text-green-700 transition hover:bg-green-400 active:not-disabled:translate-y-1 disabled:opacity-50"
+          className="cursor-pointer rounded-xs bg-green-300 px-4 py-2 text-green-700 transition hover:bg-green-400 active:translate-y-1 disabled:opacity-50"
         >
           Compartir
         </button>

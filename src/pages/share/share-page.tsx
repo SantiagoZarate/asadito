@@ -1,5 +1,7 @@
 import { Container, Main, Section } from '@/components/ui/craft';
+import { formatMoney } from '@/lib/formatMoney';
 import { parseAsJson, useQueryState } from 'nuqs';
+import { Link } from 'react-router-dom';
 import { z } from 'zod';
 
 const itemSchema = z.object({
@@ -28,19 +30,38 @@ const schema = z.object({
 export function SharePage() {
   const [json] = useQueryState('json', parseAsJson(schema.parse));
 
-  console.log({
-    json,
-  });
-
   if (!json) {
     return null;
   }
+
+  const totalDrinkPrice = json?.drinkItems.reduce(
+    (acc, curr) => acc + curr.units * curr.price,
+    0,
+  );
+
+  const totalMeatPrice = json.meatItems.reduce(
+    (acc, curr) => acc + (curr.grams / 1000) * curr.price,
+    0,
+  );
+
+  const totalOffalPrice = json.offalItems.reduce(
+    (acc, curr) => acc + (curr.grams / 1000) * curr.price,
+    0,
+  );
+
+  const totalPrice = totalDrinkPrice + totalMeatPrice + totalOffalPrice;
 
   return (
     <Main>
       <Section>
         <Container className="flex flex-col gap-6">
-          <h1>Shared page</h1>
+          <div className="pointer-events-none absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#20202012_1px,transparent_1px),linear-gradient(to_bottom,#20202012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(black,transparent)]"></div>
+          <header className="flex flex-col gap-1">
+            <Link className="text-sm" to={'/'}>
+              Armar otro asado
+            </Link>
+            <h1>Resumen de los elementos del asado</h1>
+          </header>
           {json!.meatItems.length > 0 && (
             <section>
               <p>Carne</p>
@@ -52,7 +73,7 @@ export function SharePage() {
                       <p className="text-xs">{item.grams}</p>
                     </div>
                     <p className="font-semibold">
-                      {(item.grams / 1000) * item.price}
+                      {formatMoney((item.grams / 1000) * item.price)}
                     </p>
                   </li>
                 ))}
@@ -70,7 +91,7 @@ export function SharePage() {
                       <p className="text-xs">{item.grams}</p>
                     </div>
                     <p className="font-semibold">
-                      {(item.grams / 1000) * item.price}
+                      {formatMoney((item.grams / 1000) * item.price)}
                     </p>
                   </li>
                 ))}
@@ -87,12 +108,19 @@ export function SharePage() {
                       <p>{item.name}</p>
                       <p className="text-xs">{item.units} Unidades</p>
                     </div>
-                    <p className="font-semibold">{item.units * item.price}</p>
+                    <p className="font-semibold">
+                      {' '}
+                      {formatMoney(item.units * item.price)}
+                    </p>
                   </li>
                 ))}
               </ul>
             </section>
           )}
+          <section className="flex flex-wrap justify-between">
+            <p>Total</p>
+            <p className="font-bold">{formatMoney(totalPrice)}</p>
+          </section>
         </Container>
       </Section>
     </Main>
