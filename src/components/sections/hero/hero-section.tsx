@@ -6,7 +6,7 @@ export function HeroSection() {
     <Section className="hero group relative">
       <Container className="relative z-10 flex items-center justify-center py-28 lg:py-28">
         <section className="flex flex-col items-center">
-          <h1 className="font-black">El asado empieza acá</h1>
+          <h1 className="font-bold capitalize">El asado empieza acá</h1>
           <p>Calculá cuánto comprar según el hambre de tus invitados.</p>
         </section>
         <span className="steak text-7xl">🥩</span>
