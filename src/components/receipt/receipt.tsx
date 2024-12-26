@@ -1,7 +1,6 @@
 import { useProductSelector } from '@/context/product/hooks';
 import { formatMoney } from '@/lib/formatMoney';
-import { toast } from 'sonner';
-import { Container, Section } from '../ui/craft';
+import { PropsWithChildren } from 'react';
 
 export function Receipt() {
   const meatItems = useProductSelector((state) => state.meat.items);
@@ -9,73 +8,65 @@ export function Receipt() {
   const offalItems = useProductSelector((state) => state.offel.items);
 
   return (
-    <Section>
-      <Container className="flex flex-col items-center justify-center gap-12">
-        <section className="w-full max-w-[400px] p-6 shadow-lg">
-          <section className="flex flex-col gap-4">
-            <p className="font-semibold">Carne</p>
-            <div className="flex flex-col gap-2">
-              {meatItems.map((item) => (
-                <article
-                  className="flex flex-wrap items-center justify-between gap-4"
-                  key={item.id}
-                >
-                  <div className="flex flex-col gap-1">
-                    <p>{item.name}</p>
-                    <p className="text-xs">
-                      {item.grams} Gramos ({item.grams / 1000}KG)
-                    </p>
-                  </div>
-                  <p>{formatMoney(item.price)}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-        </section>
-        <button
-          onClick={() => {
-            const stringifiedMeatItems = JSON.stringify(
-              meatItems.map((m) => ({
-                grams: m.grams,
-                price: m.price,
-                name: m.name,
-              })),
-            );
+    <section className="mx-auto flex w-full max-w-[400px] flex-col divide-y p-6 shadow-lg [&>*:not(last-child)]:pb-4">
+      <ReceiptSubtitle title="Carne">
+        {meatItems.map((item) => (
+          <ReceiptItem
+            detail={`${item.grams} Gramos (${item.grams / 1000}KG)`}
+            name={item.name}
+            price={item.price}
+          />
+        ))}
+      </ReceiptSubtitle>
+      <ReceiptSubtitle title="Achuras">
+        {offalItems.map((item) => (
+          <ReceiptItem
+            detail={`${item.grams} Gramos (${item.grams / 1000}KG)`}
+            name={item.name}
+            price={item.price}
+          />
+        ))}
+      </ReceiptSubtitle>
+      <ReceiptSubtitle title="Bebidas">
+        {drinkItems.map((item) => (
+          <ReceiptItem
+            detail={`${item.units} Unidades`}
+            name={item.name}
+            price={item.price}
+          />
+        ))}
+      </ReceiptSubtitle>
+    </section>
+  );
+}
 
-            const stringifiedDrinkItems = JSON.stringify(
-              drinkItems.map((m) => ({
-                units: m.units,
-                price: m.price,
-                name: m.name,
-              })),
-            );
+interface SubtitleProps extends PropsWithChildren {
+  title: string;
+}
 
-            const stringifiedOffalItems = JSON.stringify(
-              offalItems.map((m) => ({
-                grams: m.grams,
-                price: m.price,
-                name: m.name,
-              })),
-            );
+export function ReceiptSubtitle({ title, children }: SubtitleProps) {
+  return (
+    <section className="flex flex-col gap-4">
+      <p className="font-semibold capitalize">{title}</p>
+      <div className="flex flex-col gap-2">{children}</div>
+    </section>
+  );
+}
 
-            navigator.clipboard.writeText(
-              window.location.origin +
-                '/share?json={"meatItems":' +
-                stringifiedMeatItems +
-                ',"drinkItems":' +
-                stringifiedDrinkItems +
-                ',"offalItems":' +
-                stringifiedOffalItems +
-                '}',
-            );
+interface ItemProps {
+  name: string;
+  price: number;
+  detail: JSX.Element | string;
+}
 
-            toast('Link copiado al portapapeles! compartilo con tus amigos');
-          }}
-          className="cursor-pointer rounded-xs bg-green-300 px-4 py-2 text-green-700 transition hover:bg-green-400 active:translate-y-1"
-        >
-          Compartir
-        </button>
-      </Container>
-    </Section>
+export function ReceiptItem({ name, price, detail }: ItemProps) {
+  return (
+    <article className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-col gap-1">
+        <p>{name}</p>
+        <p className="text-xs">{detail}</p>
+      </div>
+      <p>{formatMoney(price)}</p>
+    </article>
   );
 }
