@@ -40,7 +40,7 @@ export function Footer({ isInView }: { isInView: boolean }) {
     <Section className="fixed bottom-0 w-full p-1 sm:p-1 md:p-1 xl:p-1">
       <Container>
         <motion.footer
-          className="flex flex-col divide-y divide-green-300 rounded-md border border-green-300 bg-green-50 font-semibold text-green-600 sm:p-2 xl:py-4"
+          className="flex flex-col divide-y divide-green-300 rounded-md border border-green-300 bg-green-50 text-sm font-semibold text-green-600 sm:p-2 xl:py-4"
           animate={isInView ? 'hidden' : 'visible'}
           variants={footerAnimation}
           initial="hidden"

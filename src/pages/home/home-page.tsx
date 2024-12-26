@@ -23,7 +23,7 @@ export function HomePage() {
       <Main className="pb-20">
         <HeroSection />
         <Section className="flex justify-center">
-          <Container className="relative flex w-full flex-col gap-12 border-l border-dashed lg:mr-0 lg:ml-12 lg:py-0 lg:pl-10">
+          <Container className="relative flex w-full flex-col gap-12 sm:ml-8 sm:border-l sm:border-dashed sm:pl-6 lg:mr-0 lg:ml-12 lg:py-0 lg:pl-10">
             <PeopleSection />
             <ProductsSection />
             <LastStepSection />

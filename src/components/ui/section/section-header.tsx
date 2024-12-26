@@ -24,10 +24,10 @@ export function SectionHeader({
   title,
 }: Props) {
   return (
-    <header className="flex items-baseline justify-between">
+    <header className="flex flex-col flex-wrap items-baseline justify-between gap-2 *:min-w-fit sm:flex-row">
       <h2>{title}</h2>
       <Select onValueChange={onValueChange}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="sm:w-[180px]">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>

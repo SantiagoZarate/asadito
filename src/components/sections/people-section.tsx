@@ -11,7 +11,7 @@ export function PeopleSection() {
   const people = useProductSelector((state) => state.people.people);
 
   return (
-    <section className="flex flex-col gap-6">
+    <section className="flex flex-col flex-wrap gap-6">
       <SectionDescription
         description="Para calcular cuanto hay que poner por cabeza"
         title="Cuantos comensales vas a tener?"

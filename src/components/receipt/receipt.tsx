@@ -13,8 +13,8 @@ export function Receipt() {
         {meatItems.map((item) => (
           <ReceiptItem
             detail={`${item.grams} Gramos (${item.grams / 1000}KG)`}
+            price={item.price * (item.grams / 1000)}
             name={item.name}
-            price={item.price}
           />
         ))}
       </ReceiptSubtitle>
@@ -22,8 +22,8 @@ export function Receipt() {
         {offalItems.map((item) => (
           <ReceiptItem
             detail={`${item.grams} Gramos (${item.grams / 1000}KG)`}
+            price={item.price * (item.grams / 1000)}
             name={item.name}
-            price={item.price}
           />
         ))}
       </ReceiptSubtitle>
@@ -32,7 +32,7 @@ export function Receipt() {
           <ReceiptItem
             detail={`${item.units} Unidades`}
             name={item.name}
-            price={item.price}
+            price={item.price * item.units}
           />
         ))}
       </ReceiptSubtitle>
