@@ -47,7 +47,7 @@ export function OffalTable() {
 
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>Lista de products.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Achura</TableHead>

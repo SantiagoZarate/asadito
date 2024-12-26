@@ -48,7 +48,7 @@ export function DrinksTable() {
 
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>Lista de productos.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Corte</TableHead>

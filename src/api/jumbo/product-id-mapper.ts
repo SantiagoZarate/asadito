@@ -5,6 +5,10 @@ export const meatIds = {
   vacio: '330346',
   colitaDeCuadril: '5151',
   matambre: '10599',
+  bifeDeChorizo: '5153',
+  cuadrilChurrasco: '31045',
+  entraña: '5126',
+  tiraDeAsado: '247557',
 };
 
 export const drinksIds = {
@@ -13,6 +17,7 @@ export const drinksIds = {
   speed: '258978',
   skyy: '35123',
   chandon: '322216',
+  gancia: '167929',
 };
 
 export const offalIds = {
@@ -20,4 +25,5 @@ export const offalIds = {
   chorizo: '263146',
   chinchulin: '331766',
   molleja: '337111',
+  riñon: '331769',
 };

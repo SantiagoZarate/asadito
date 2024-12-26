@@ -13,6 +13,22 @@ export const CORTES_INIT = [
     name: 'Colita de Cuadril',
     id: meatIds.colitaDeCuadril,
   },
+  {
+    name: 'Bife de Chorizo',
+    id: meatIds.bifeDeChorizo,
+  },
+  {
+    name: 'Cuadril Churrasco',
+    id: meatIds.cuadrilChurrasco,
+  },
+  {
+    name: 'Entraña',
+    id: meatIds.entraña,
+  },
+  {
+    name: 'Tira de Asado',
+    id: meatIds.tiraDeAsado,
+  },
 ];
 
 export const OFFAL_INIT = [
@@ -32,11 +48,15 @@ export const OFFAL_INIT = [
     name: 'Chorizo',
     id: offalIds.chorizo,
   },
+  {
+    name: 'Riñon',
+    id: offalIds.riñon,
+  },
 ];
 
 export const BEBIDAS_INIT = [
   {
-    name: 'Fernet',
+    name: 'Fernet Branca 750ml',
     id: drinksIds.fernet,
   },
   {
@@ -54,6 +74,10 @@ export const BEBIDAS_INIT = [
   {
     name: 'Speed',
     id: drinksIds.speed,
+  },
+  {
+    name: 'Gancia 950ml',
+    id: drinksIds.gancia,
   },
 ];
 
