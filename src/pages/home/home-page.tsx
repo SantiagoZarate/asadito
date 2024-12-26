@@ -7,9 +7,17 @@ import { ProductsSection } from '@/components/sections/products/products-section
 import { Container, Main, Section } from '@/components/ui/craft';
 import { Toaster } from '@/components/ui/sonner';
 import { productsStore } from '@/context/product/products-store';
+import { useInView } from 'motion/react';
+import { useRef } from 'react';
 import { Provider } from 'react-redux';
 
 export function HomePage() {
+  const receiptRef = useRef<HTMLElement>(null);
+  const isInView = useInView(receiptRef, {
+    once: false,
+    margin: '0px 0px -200px 0px',
+  });
+
   return (
     <Provider store={productsStore}>
       <Main className="pb-20">
@@ -21,9 +29,9 @@ export function HomePage() {
             <LastStepSection />
           </Container>
         </Section>
-        <ReceiptSection />
+        <ReceiptSection ref={receiptRef} />
       </Main>
-      <Footer />
+      <Footer isInView={isInView} />
       <Toaster />
     </Provider>
   );

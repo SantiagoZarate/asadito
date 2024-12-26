@@ -1,15 +1,16 @@
 import { useProductSelector } from '@/context/product/hooks';
+import { forwardRef } from 'react';
 import { toast } from 'sonner';
 import { Container, Section } from '../ui/craft';
 import { Receipt } from './receipt';
 
-export function ReceiptSection() {
+export const ReceiptSection = forwardRef<HTMLElement, {}>((_, ref) => {
   const meatItems = useProductSelector((state) => state.meat.items);
   const drinkItems = useProductSelector((state) => state.drinks.items);
   const offalItems = useProductSelector((state) => state.offel.items);
 
   return (
-    <Section>
+    <Section ref={ref}>
       <Container className="flex flex-col items-center justify-center gap-12">
         <Receipt />
         <button
@@ -58,4 +59,6 @@ export function ReceiptSection() {
       </Container>
     </Section>
   );
-}
+});
+
+ReceiptSection.displayName = 'ReceiptSection';

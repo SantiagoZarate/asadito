@@ -120,13 +120,23 @@ const Main = ({ children, className, id }: MainProps) => {
 // Section Component
 // This component is used for defining sections within the page
 
-const Section = ({ children, className, id }: SectionProps) => {
-  return (
-    <section className={cn('py-8 md:py-12', className)} id={id}>
+// const Section = ({ children, className, id }: SectionProps) => {
+//   return (
+//     <section className={cn('py-8 md:py-12', className)} id={id}>
+//       {children}
+//     </section>
+//   );
+// };
+
+const Section = React.forwardRef<HTMLElement, SectionProps>(
+  ({ children, className, id }, ref) => (
+    <section ref={ref} className={cn('py-8 md:py-12', className)} id={id}>
       {children}
     </section>
-  );
-};
+  ),
+);
+
+Section.displayName = 'Section';
 
 // Container Component
 // This component is used for containing content with a maximum width and padding
